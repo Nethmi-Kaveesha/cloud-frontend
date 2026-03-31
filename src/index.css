@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: hsl(0 0% 4%); /* deep black */
+  --color-foreground: hsl(0 0% 92%);
+
+  --color-card: hsl(0 0% 7%);
+  --color-card-foreground: hsl(0 0% 92%);
+
+  --color-popover: hsl(0 0% 7%);
+  --color-popover-foreground: hsl(0 0% 92%);
+
+  --color-primary: hsl(45 80% 55%); /* gold */
+  --color-primary-foreground: hsl(0 0% 4%);
+
+  --color-secondary: hsl(0 0% 10%);
+  --color-secondary-foreground: hsl(0 0% 92%);
+
+  --color-muted: hsl(0 0% 10%);
+  --color-muted-foreground: hsl(0 0% 65%);
+
+  --color-accent: hsl(45 85% 50%);
+  --color-accent-foreground: hsl(0 0% 92%);
+
+  --color-destructive: hsl(0 70% 50%);
+  --color-destructive-foreground: hsl(0 0% 92%);
+
+  --color-border: hsl(45 50% 25%);
+  --color-input: hsl(0 0% 12%);
+  --color-ring: hsl(45 80% 55%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+
+    /* subtle gold glow background */
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(45, 80%, 55%, 0.08) 0, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(45, 80%, 55%, 0.05) 0, transparent 50%);
+  }
+}
+
+/* Glass effect updated for gold theme */
+.glassmorphism {
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+}
+
+/* Gold floating glow instead of blue */
+.cloud-blur {
+  filter: blur(60px);
+  opacity: 0.35;
+  animation: cloud-float 20s ease-in-out infinite alternate;
+  background: hsl(45 80% 55%);
+}
+
+@keyframes cloud-float {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(5%, 5%) scale(1.1);
+  }
+}
+
+/* Premium gold gradient text */
+.gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(
+    to right,
+    #D4AF37,
+    #B8902F,
+    #F5D76E
+  );
+}
+
+.animate-in {
+  animation: animate-in 0.5s ease-out forwards;
+}
+
+@keyframes animate-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
